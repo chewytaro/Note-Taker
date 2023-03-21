@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "note-taker",
+  "description": "Help users take notes",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chewytaro/Note-Taker.git"
+  },
+  "keywords": [
+    "Note-Taker"
+  ],
+  "author": "Wendy Vu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chewytaro/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/chewytaro/Note-Taker#readme"
+}
