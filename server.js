@@ -5,10 +5,10 @@ const { v4: uuidv4 } = require('uuid');
 
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 
-app.use(express.static(path.join(__dirname, 'Note-Taker/Develop/public')));
+app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -19,12 +19,12 @@ app.get('/notes', (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Note-Taker/Develop/public/index.html'));
+  res.sendFile(path.join(__dirname, 'Develop/public/index.html'));
 });
 
 
 app.get("/api/notes", (req, res) => {
-  fs.readFile(path.join(__dirname, "Note-Taker/Develop/db/db.json"), "utf8", (err, data) => {
+  fs.readFile(path.join(__dirname, "Develop/db/db.json"), "utf8", (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).json({ error: "Failed to read notes from file." });
@@ -39,7 +39,7 @@ app.post('/api/notes', (req, res) => {
   const newNote = req.body;
   newNote.id = uuidv4();
 
-  fs.readFile(path.join(__dirname, 'Note-Taker/Develop/db/db.json'), 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, 'Develop/db/db.json'), 'utf8', (err, data) => {
     if (err) {
       console.error(err);
       return res.status(500).end();
@@ -48,7 +48,7 @@ app.post('/api/notes', (req, res) => {
     const notes = JSON.parse(data);
     notes.push(newNote);
 
-    fs.writeFile(path.join(__dirname, 'Note-Taker/Develop/db/db.json'), JSON.stringify(notes, null, 2), (err) => {
+    fs.writeFile(path.join(__dirname, 'Develop/db/db.json'), JSON.stringify(notes, null, 2), (err) => {
       if (err) {
         console.error(err);
         return res.status(500).end();
